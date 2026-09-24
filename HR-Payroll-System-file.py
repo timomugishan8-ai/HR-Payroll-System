@@ -207,6 +207,68 @@ class PayrollSystem:
 
 
 # =====================================================
+# INPUT VALIDATION HELPER FUNCTIONS
+# =====================================================
+
+def get_non_empty_string(prompt):
+    """Gets a non-empty string from the user."""
+    while True:
+        value = input(prompt).strip()
+
+        if value == "":
+            print("Error: This field cannot be empty.")
+        else:
+            return value
+
+
+def get_hours_worked():
+    """Gets valid hours worked."""
+    while True:
+        try:
+            hours = float(input("Hours Worked This Week: "))
+
+            if hours < 0:
+                print("Error: Hours worked cannot be negative.")
+
+            elif hours > 168:
+                print("Error: A week only has 168 hours.")
+
+            else:
+                return hours
+
+        except ValueError:
+            print("Error: Please enter a valid number.")
+
+
+def get_hourly_rate():
+    """Gets a valid hourly rate."""
+    while True:
+        try:
+            rate = float(input("Hourly Rate (UGX): "))
+
+            if rate <= 0:
+                print("Error: Hourly rate must be greater than zero.")
+
+            else:
+                return rate
+
+        except ValueError:
+            print("Error: Please enter a valid amount.")
+
+
+def get_menu_choice():
+    """Gets a valid menu option."""
+    while True:
+        choice = input("Enter your choice (1-5): ").strip()
+
+        if choice in ["1", "2", "3", "4", "5"]:
+            return choice
+
+        print("Invalid choice. Please enter a number between 1 and 5.")
+
+
+
+# =====================================================
 # DEMONSTRATION
 # =====================================================
 
